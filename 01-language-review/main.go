@@ -12,6 +12,14 @@ type secretAgent struct {
 	licenseToKill bool
 }
 
+type human interface {
+	speak()
+}
+
+func saySomething(h human) {
+	h.speak()
+}
+
 func (p person) speak() {
 	fmt.Println(p.fname, p.lname, `says, "Good morning."`)
 }
@@ -27,7 +35,7 @@ func main() {
 		"Miss",
 		"Moneypenny",
 	}
-	p1.speak()
+	// p1.speak()
 
 	sa1 := secretAgent{
 		person{
@@ -36,6 +44,8 @@ func main() {
 		},
 		true,
 	}
-	sa1.speak()
-	sa1.person.speak()
+	// sa1.speak()
+	// sa1.person.speak()
+	saySomething(p1)
+	saySomething(sa1)
 }
